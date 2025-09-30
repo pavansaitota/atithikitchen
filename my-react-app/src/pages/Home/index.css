@@ -1,0 +1,174 @@
+/* ================================================= */
+/* --- 1. Global/Container Styles (.top) --- */
+/* ================================================= */
+
+.top {
+  width: 100%;
+  padding: 0; 
+  /* Important: Change from 'cover' to 'initial' or 'unset' if you want the 
+     background image to cover the whole component height, OR just remove it 
+     since the component is long now. Using a simple color for clarity here. */
+   background-image: url('./../../assets//login.png'); 
+   background-size: cover; 
+  background-position: center; 
+  position: relative; 
+  min-height: 100vh; /* Ensure it takes up at least the full viewport height */
+  display: flex;
+  flex-direction: column; /* Stack the header, carousel, and footer vertically */
+}
+
+
+/* ================================================= */
+/* --- 2. Title/Header Styles (#title) --- */
+/* ================================================= */
+
+#title {
+  text-align: center;
+  color: white;
+  width: 100%; 
+  /* Using a warm, food-appropriate background color for the title band */
+  background-color: transparent; /* Deep Brick Red/Brown */
+  padding: 30px 40px; 
+  border-radius: 0; 
+  margin-bottom: 20px; 
+  
+}
+
+
+#title h1 {
+  font-family: 'Georgia', serif; 
+  font-size: 3.5em; 
+  margin-bottom: 5px; 
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+
+#title p {
+  font-family: 'Arial', sans-serif; 
+  font-size: 1.5em; 
+  font-style: italic;
+  font-weight: 300;
+  margin-top: 5px;
+  color: #FFC300; /* Saffron/Gold accent color */
+}
+
+
+#title h1, #title p {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* ================================================= */
+/* --- 3. Carousel Styles (react-multi-carousel) --- */
+/* ================================================= */
+
+.carousel-container {
+  padding: 0 40px; 
+  margin: 20px auto; 
+  max-width: 100%;
+  flex-grow: 2; /* Allow the space between header and footer to grow */
+}
+
+/* IMPORTANT: Styling for the images inside the carousel */
+.carousel-container img {
+  width: 600px; 
+  height: 500px; /* Crucial: Set a fixed height */
+  object-fit: cover; /* Changed to cover for better banner display */
+  display:grid; /* Helps with layout consistency */
+  border-radius: 8px;
+}
+
+/* Reset margin on the image to center items correctly */
+/* The margin-left: 50% might be causing layout issues. 
+   Removing or overriding it is recommended if items are not centered. */
+.carousel-item-padding-40-px {
+  padding: 0 10px; 
+  margin: 0; /* Ensure no unwanted margin pushes the item */
+}
+
+.custom-dot-list-style {
+  bottom: 10px !important;
+}
+
+
+/* ================================================= */
+/* --- 4. Footer Styles --- */
+/* ================================================= */
+
+footer {
+  width: 100%;
+  margin-top: auto; /* Pushes the footer to the bottom of the .top container */
+  background-color: #333; /* Dark background */
+  color: white;
+  padding: 20px 0;
+}
+
+.footer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-box {
+  display: flex;
+  flex-wrap: wrap; /* Allows items to stack on small screens */
+  justify-content: space-between; /* Spreads out the three main boxes */
+  align-items: center;
+  gap: 15px; /* Spacing between boxes */
+  text-align: center;
+}
+
+/* Social Media Icons */
+.social-media {
+  display: flex;
+  gap: 15px;
+  font-size: 1.5em;
+  order: 1; /* Default order for better mobile stacking */
+}
+.social-media a img {
+    height: 80px;
+    width: 80px;
+}
+.social-media a {
+  color: #FFC300; /* Saffron/Gold icon color */
+  transition: color 0.3s;
+}
+
+.social-media a:hover {
+  color: #fff; /* White on hover */
+}
+
+/* Copyright Text */
+.copyright {
+  font-size: 0.9em;
+  opacity: 0.8;
+  order: 2; /* Center on mobile, middle on desktop */
+}
+
+/* Brand Name */
+.brand {
+  font-size: 1.2em;
+  font-weight: bold;
+  order: 3; /* Last on desktop */
+}
+
+.brand span {
+  color: #FFC300; /* Highlight the accent part */
+}
+
+/* --- Mobile Responsiveness for Footer --- */
+@media (max-width: 768px) {
+  .footer-box {
+    flex-direction: column; /* Stack all items vertically */
+    text-align: center;
+  }
+  
+  .social-media, .copyright, .brand {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .social-media {
+    justify-content: center; /* Center icons on mobile */
+  }
+}
