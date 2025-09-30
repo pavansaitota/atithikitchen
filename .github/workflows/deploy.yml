@@ -1,0 +1,40 @@
+name: Deploy React App to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # deploy only when main branch is pushed
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout the repo
+      - uses: actions/checkout@v3
+
+      # 2. Set up Node.js (use same version as your local)
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      # 3. Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # 4. Lint the project (optional, skip if you don't need)
+      - name: Lint code
+        run: npm run lint || echo "Lint errors ignored"
+
+      # 5. Build the project
+      - name: Build project
+        run: npm run build
+
+      # 6. Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v6
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          # branch: gh-pages  # optional, defaults to gh-pages
